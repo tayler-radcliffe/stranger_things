@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-const Login = ({username, setUsername, password, setPassword}) => {
+const Login = ({username, setUsername, password, setPassword, loginToken, setLoginToken}) => {
 
 
 const loginUser = async (username, password) => {
@@ -32,9 +32,11 @@ function getUserToken(token) {
 
     console.log(data);
     const token = data.data.token;
-    getUserToken();
+    setLoginToken(token);
+    localStorage.setItem('loginToken', JSON.stringify(loginToken));
 
     console.log(token);
+
     setUsername('');
     setPassword('');
 

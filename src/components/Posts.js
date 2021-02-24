@@ -12,19 +12,20 @@ const Posts = () => {
         .then(({data}) => setPosts(data.posts));
     }, [])
     
-console.log(posts);
+    console.log(posts);
 
 
+    if(post.active === true) {
     return ( <div> {posts.map(
         post => <div><h2>{post.title}</h2>
         <h3>{post.description}</h3>
-        <h3>Price: {post.price}</h3>
-        <h3>Seller: {post.seller}</h3>
-        <h3>Location: {post.location}</h3>
+        <h3><strong>Price:</strong> {post.price}</h3>
+        <h3><strong>Seller:</strong> {post.author.username}</h3>
+        <h3><strong>Location:</strong> {post.location}</h3>
+        <h3><strong>Will Deliver:</strong> {post.willDeliver}</h3>
         <button>Send Message</button>
-        </div>
-    )}</div>
-
-)}
+        </div> )}
+    </div>)}
+}
 
 export default Posts;
